@@ -11,9 +11,26 @@
 </head>
 <body>
 
+  <form id="form" action="index.html" method="post">
+    <input id="search-bar" type="text"  value="" placeholder="Cerca">
+    <button id="search-button" type="button" name="button">Cerca</button>
+  </form>
+
+  <uk id="movie-list">
+
+  </ul>
 
 
+<!-- TEMPLATE MOVIES -->
+  <script id="template" type="text/x-handlebars-template">
 
+    <li class="container">
+      <h1>Titolo: {{title}}</h1>
+      <h2>Titolo in lingua originale: {{original_title}}</h2>
+      <p>Lingua originale: {{language}}</p>
+      <h5>Voto: {{vote}}</h5>
+    </li>
+  </script>
 
   <script src="script/script.js" charset="utf-8"></script>
 </body>
