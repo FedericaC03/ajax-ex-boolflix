@@ -1,20 +1,21 @@
 $(document).ready(function(){
-
+searchClick();
 
 //CHIAMATA AJAX
-var searchMovie = "spongebob"
+var searchMovie = value;
 $.ajax(
   {
     "url": "https://api.themoviedb.org/3/search/movie",
     "data": {
       "api_key": "639cb73214ae520200c0768191807286",
-      "query": searchMovie, //creare la variabile che ti va a leggere il film
+      "query": searchMovie,
       "language": "it-IT"
     },
     "method": "GET",
     "success": function(data) {
       var risultato = data.results;
       renderMovie(risultato);
+      searchClick();
     },
 
     "error": function(errore) {
@@ -33,7 +34,6 @@ function renderMovie(movies) {
 
 //STAMPO OGNI FILM RICEVUTO DALLA CHIAMATA AJAX
 for (var i = 0; i < movies.length; i++) {
-  console.log(movies[i]);
 
   var context = {
           "title" : movies[i].title,
@@ -44,8 +44,15 @@ for (var i = 0; i < movies.length; i++) {
         };
         var html = template(context);
         $("#movie-list").append(html);
-
+}
 }
 
+//PRENDO IL VALORE DALLA INPUT QUANDO CLICCO SU CERCA
+function searchClick() {
 
-}
+$("#search-button").click(function() {
+  var value = $("#search-bar").val("");
+  $("#search-bar").val(""); //svuoto la search bar dopo ogni invio
+  console.log(value);
+})
+};
