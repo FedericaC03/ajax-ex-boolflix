@@ -1,7 +1,8 @@
 $(document).ready(function(){
 
+
+  //METTO LA CHIAMATA AJAX ALL'INTERNO DI UNA FUNZIONE CHE RESTITUISCE LA LISTA DEI FILM
  function callAjaxMovies(value) {
-    //METTO LA CHIAMATA AJAX ALL'INTERNO DI UNA FUNZIONE
     $.ajax(
       {
         "url": "https://api.themoviedb.org/3/search/movie",
@@ -12,8 +13,8 @@ $(document).ready(function(){
         },
         "method": "GET",
         "success": function(data) {
-          var risultato = data.results;
-          renderMovie(risultato);
+          var risultatoFilm = data.results;
+          renderMovie(risultatoFilm);
         },
 
         "error": function(errore) {
@@ -23,28 +24,28 @@ $(document).ready(function(){
     );
   }
 
-  // function callAjaxSeries(value) {
-  //    //METTO LA CHIAMATA AJAX ALL'INTERNO DI UNA FUNZIONE
-  //    $.ajax(
-  //      {
-  //        "url": "https://api.themoviedb.org/3/search/tv",
-  //        "data": {
-  //          "api_key": "639cb73214ae520200c0768191807286",
-  //          "query": value,
-  //          "language": "it-IT"
-  //        },
-  //        "method": "GET",
-  //        "success": function(data) {
-  //          var risultatoSeries = data.results;
-  //          console.log(risultatoSeries);
-  //        },
-  //
-  //        "error": function(errore) {
-  //          alert("Errore");
-  //        }
-  //      }
-  //    );
-  //  }
+  //METTO LA CHIAMATA AJAX ALL'INTERNO DI UNA FUNZIONE CHE RESTITUISCE LA LISTA DELLE SERIE TV
+  function callAjaxSeries(value) {
+     $.ajax(
+       {
+         "url": "https://api.themoviedb.org/3/search/tv",
+         "data": {
+           "api_key": "639cb73214ae520200c0768191807286",
+           "query": value,
+           "language": "it-IT"
+         },
+         "method": "GET",
+         "success": function(data) {
+           var risultatoSeries = data.results;
+           renderSeries(risultatoSeries)
+         },
+
+         "error": function(errore) {
+           alert("Errore");
+         }
+       }
+     );
+   }
 
 
   // PRENDO IL VALORE DALLA INPUT CLICCANDO SU CERCA
@@ -52,23 +53,23 @@ $(document).ready(function(){
     var value = $("#search-bar").val();
     $("#search-bar").val(""); //svuoto la search bar dopo ogni invio
     callAjaxMovies(value);
-    // callAjaxSeries(value);
+    callAjaxSeries(value);
   });
 
-  // PRENDO IL VALORE DALLA INPUT CLICCANDO INVIO
+  // PRENDO IL VALORE DALLA INPUT CLICCANDO SU INVIO
   $("#search-bar").keyup(
       function(event) {
         if (event.which == 13) {
           var value = $("#search-bar").val();
           $("#search-bar").val(""); //svuoto la search bar dopo ogni invio
           callAjaxMovies(value);
-          // callAjaxSeries(value);
+          callAjaxSeries(value);
         }
       }
     );
 
 //CREO UNA FUNZIONE PER LE STELLINE
-function getStars(vote) {
+  function getStars(vote) {
 
   //TRASFORMO IL VOTO DA 1 A 10 IN UN NUMERO INTERO DA 1 A 5
     var vote = Math.floor(vote / 2);
@@ -100,7 +101,7 @@ function getFlag(flag) {
   } else if (flag == "de") {
     flag = '<img src="img/de.svg" alt="it">';
   } else {
-    flag = flag;
+    flag;
   }
   return flag;
 };
@@ -131,7 +132,30 @@ var flag = getFlag(movies[i].original_language);
   }
 }
 
+//FUNZIONE CHE MI RITORNA LA LISTA DELLE SERIE TV
+function renderSeries(series) {
+  //HANDLEBARS TEMPLATE
+  var source = $("#template").html();
+  var template = Handlebars.compile(source);
 
+  //CANCELLA LA LISTA QUANDO SI EFFETTUA UNA NUOVA RICERCA
+    $("#movie-list").html("");
+  //STAMPO OGNI FILM RICEVUTO DALLA CHIAMATA AJAX
+  for (var i = 0; i < series.length; i++) {
+  var star = getStars(series[i].vote_average);
+  var flag = getFlag(series[i].original_language);
 
+    var context = {
+            "title" : series[i].name,
+            "original_title" : series[i].original_name ,
+            "language" : flag,
+            "vote" : series[i].vote_average,//NUMERO
+            "voto" : star, //STELLA
+            "release_date" : series[i].release_date,
+          };
+          var html = template(context);
+          $("#movie-list").append(html);
+    }
+}
 
 });
