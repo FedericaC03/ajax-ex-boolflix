@@ -62,9 +62,21 @@ function getStars(vote) {
 }
 
 //FUNZIONE CHE MI RITORNA L'IMMAGINE DELLA BANDIERA IN BASE ALLA LINGUA
-function getFlag() {
+function getFlag(flag) {
   var lingua = movies[i].original_language;
-  console.log(lingua);
+  if (lingua == "it") {
+    var flag = '<img src="img/it.svg" alt="it">';
+  } else if (lingua == "en") {
+    var flag = '<img src="img/gb.svg" alt="it">';
+  } else if (lingua == "fr") {
+    var flag = '<img src="img/fr.svg" alt="it">';
+  } else if (lingua == "es") {
+    var flag = '<img src="img/es.svg" alt="it">';
+  } else if (lingua == "de") {
+    var flag = '<img src="img/de.svg" alt="it">';
+  } else {
+    var flag = lingua;
+  }
 };
 
 //FUNZIONE CHE MI RITORNA LA LISTA DEI FILM
@@ -78,14 +90,34 @@ function renderMovie(movies) {
 //STAMPO OGNI FILM RICEVUTO DALLA CHIAMATA AJAX
 for (var i = 0; i < movies.length; i++) {
 
+var star = getStars(movies[i].vote_average);
+var flag = getFlag(movies[i].original_language);
+
+// //FLAG
+// var lingua = movies[i].original_language;
+// if (lingua == "it") {
+//   var flag = '<img src="img/it.svg" alt="it">';
+// } else if (lingua == "en") {
+//   var flag = '<img src="img/gb.svg" alt="it">';
+// } else if (lingua == "fr") {
+//   var flag = '<img src="img/fr.svg" alt="it">';
+// } else if (lingua == "es") {
+//   var flag = '<img src="img/es.svg" alt="it">';
+// } else if (lingua == "de") {
+//   var flag = '<img src="img/de.svg" alt="it">';
+// } else {
+//   var flag = lingua;
+// }
+//
+// console.log(lingua);
 
 
-var star  = getStars(movies[i].vote_average);
+
 
   var context = {
           "title" : movies[i].title,
           "original_title" : movies[i].original_title ,
-          "language" : movies[i].original_language,
+          "language" : flag,
           "vote" : movies[i].vote_average,//NUMERO
           "voto" : star, //STELLA
           "release_date" : movies[i].release_date,
