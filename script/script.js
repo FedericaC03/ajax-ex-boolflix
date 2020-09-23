@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
- function callAjax(value) {
+ function callAjaxMovies(value) {
     //METTO LA CHIAMATA AJAX ALL'INTERNO DI UNA FUNZIONE
     $.ajax(
       {
@@ -23,12 +23,36 @@ $(document).ready(function(){
     );
   }
 
+  // function callAjaxSeries(value) {
+  //    //METTO LA CHIAMATA AJAX ALL'INTERNO DI UNA FUNZIONE
+  //    $.ajax(
+  //      {
+  //        "url": "https://api.themoviedb.org/3/search/tv",
+  //        "data": {
+  //          "api_key": "639cb73214ae520200c0768191807286",
+  //          "query": value,
+  //          "language": "it-IT"
+  //        },
+  //        "method": "GET",
+  //        "success": function(data) {
+  //          var risultatoSeries = data.results;
+  //          console.log(risultatoSeries);
+  //        },
+  //
+  //        "error": function(errore) {
+  //          alert("Errore");
+  //        }
+  //      }
+  //    );
+  //  }
+
 
   // PRENDO IL VALORE DALLA INPUT CLICCANDO SU CERCA
   $("#search-button").click(function() {
     var value = $("#search-bar").val();
     $("#search-bar").val(""); //svuoto la search bar dopo ogni invio
-    callAjax(value);
+    callAjaxMovies(value);
+    // callAjaxSeries(value);
   });
 
   // PRENDO IL VALORE DALLA INPUT CLICCANDO INVIO
@@ -37,7 +61,8 @@ $(document).ready(function(){
         if (event.which == 13) {
           var value = $("#search-bar").val();
           $("#search-bar").val(""); //svuoto la search bar dopo ogni invio
-          callAjax(value);
+          callAjaxMovies(value);
+          // callAjaxSeries(value);
         }
       }
     );
@@ -63,20 +88,21 @@ function getStars(vote) {
 
 //FUNZIONE CHE MI RITORNA L'IMMAGINE DELLA BANDIERA IN BASE ALLA LINGUA
 function getFlag(flag) {
-  var lingua = movies[i].original_language;
-  if (lingua == "it") {
+
+  if (flag == "it") {
     var flag = '<img src="img/it.svg" alt="it">';
-  } else if (lingua == "en") {
-    var flag = '<img src="img/gb.svg" alt="it">';
-  } else if (lingua == "fr") {
-    var flag = '<img src="img/fr.svg" alt="it">';
-  } else if (lingua == "es") {
-    var flag = '<img src="img/es.svg" alt="it">';
-  } else if (lingua == "de") {
-    var flag = '<img src="img/de.svg" alt="it">';
+  } else if (flag == "en") {
+    flag = '<img src="img/gb.svg" alt="it">';
+  } else if (flag == "fr") {
+    flag = '<img src="img/fr.svg" alt="it">';
+  } else if (flag == "es") {
+    flag = '<img src="img/es.svg" alt="it">';
+  } else if (flag == "de") {
+    flag = '<img src="img/de.svg" alt="it">';
   } else {
-    var flag = lingua;
+    flag = flag;
   }
+  return flag;
 };
 
 //FUNZIONE CHE MI RITORNA LA LISTA DEI FILM
@@ -89,30 +115,8 @@ function renderMovie(movies) {
   $("#movie-list").html("");
 //STAMPO OGNI FILM RICEVUTO DALLA CHIAMATA AJAX
 for (var i = 0; i < movies.length; i++) {
-
 var star = getStars(movies[i].vote_average);
 var flag = getFlag(movies[i].original_language);
-
-// //FLAG
-// var lingua = movies[i].original_language;
-// if (lingua == "it") {
-//   var flag = '<img src="img/it.svg" alt="it">';
-// } else if (lingua == "en") {
-//   var flag = '<img src="img/gb.svg" alt="it">';
-// } else if (lingua == "fr") {
-//   var flag = '<img src="img/fr.svg" alt="it">';
-// } else if (lingua == "es") {
-//   var flag = '<img src="img/es.svg" alt="it">';
-// } else if (lingua == "de") {
-//   var flag = '<img src="img/de.svg" alt="it">';
-// } else {
-//   var flag = lingua;
-// }
-//
-// console.log(lingua);
-
-
-
 
   var context = {
           "title" : movies[i].title,
@@ -126,6 +130,8 @@ var flag = getFlag(movies[i].original_language);
         $("#movie-list").append(html);
   }
 }
+
+
 
 
 });
