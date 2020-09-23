@@ -13,7 +13,18 @@ for (var i = 0; i < movies.length; i++) {
   var vote = Math.ceil((movies[i].vote_average) / 2);
   //GENERO LE STELLE IN BASE AL VOTO
 
-$(".fa-star[data-star='"+vote+"']").addClass("yellow");
+  var stars='';
+      for(var i = 1; i <= 5; i++){
+       if(i < vote){
+        var star = $("span").html('<i class="fas fa-star"></i>');
+       }else{
+         var star = $("span").html('<i class="far fa-star"></i>');
+       }
+      stars += star;
+    };
+
+
+
 
 
   var context = {
@@ -21,6 +32,7 @@ $(".fa-star[data-star='"+vote+"']").addClass("yellow");
           "original_title" : movies[i].original_title ,
           "language" : movies[i].original_language,
           "vote" : vote,
+          "voto" : star,
           "release_date" : movies[i].release_date,
         };
         var html = template(context);
