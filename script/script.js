@@ -9,11 +9,18 @@ function renderMovie(movies) {
 //STAMPO OGNI FILM RICEVUTO DALLA CHIAMATA AJAX
 for (var i = 0; i < movies.length; i++) {
 
+//TRASFORMO IL VOTO DA 1 A 10 IN UN NUMERO INTERO DA 1 A 5
+  var vote = Math.ceil((movies[i].vote_average) / 2);
+  //GENERO LE STELLE IN BASE AL VOTO
+
+$(".fa-star[data-star='"+vote+"']").addClass("yellow");
+
+
   var context = {
           "title" : movies[i].title,
           "original_title" : movies[i].original_title ,
           "language" : movies[i].original_language,
-          "vote" : movies[i].vote_average,
+          "vote" : vote,
           "release_date" : movies[i].release_date,
         };
         var html = template(context);
@@ -63,5 +70,7 @@ $(document).ready(function(){
         }
       }
     );
+
+
 
 });
