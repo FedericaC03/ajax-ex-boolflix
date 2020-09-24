@@ -91,15 +91,15 @@ $(document).ready(function(){
 function getFlag(flag) {
 
   if (flag == "it") {
-    var flag = '<img src="img/it.svg" alt="it">';
+    var flag = '<img class="flag" src="img/it.svg" alt="it">';
   } else if (flag == "en") {
-    flag = '<img src="img/gb.svg" alt="it">';
+    flag = '<img class="flag" src="img/gb.svg" alt="it">';
   } else if (flag == "fr") {
-    flag = '<img src="img/fr.svg" alt="it">';
+    flag = '<img class="flag" src="img/fr.svg" alt="it">';
   } else if (flag == "es") {
-    flag = '<img src="img/es.svg" alt="it">';
+    flag = '<img class="flag" src="img/es.svg" alt="it">';
   } else if (flag == "de") {
-    flag = '<img src="img/de.svg" alt="it">';
+    flag = '<img class="flag" src="img/de.svg" alt="it">';
   } else {
     flag;
   }
@@ -118,6 +118,7 @@ function renderMovie(movies) {
 for (var i = 0; i < movies.length; i++) {
 var star = getStars(movies[i].vote_average);
 var flag = getFlag(movies[i].original_language);
+var poster = "https://image.tmdb.org/t/p/w185" + movies[i].poster_path;
 
   var context = {
           "title" : movies[i].title,
@@ -126,6 +127,7 @@ var flag = getFlag(movies[i].original_language);
           "vote" : movies[i].vote_average,//NUMERO
           "voto" : star, //STELLA
           "release_date" : movies[i].release_date,
+          "path" : poster ,
         };
         var html = template(context);
         $("#movie-list").append(html);
@@ -139,11 +141,12 @@ function renderSeries(series) {
   var template = Handlebars.compile(source);
 
   //CANCELLA LA LISTA QUANDO SI EFFETTUA UNA NUOVA RICERCA
-    $("#movie-list").html("");
+    $("#series-list").html("");
   //STAMPO OGNI FILM RICEVUTO DALLA CHIAMATA AJAX
   for (var i = 0; i < series.length; i++) {
   var star = getStars(series[i].vote_average);
   var flag = getFlag(series[i].original_language);
+  var poster = "https://image.tmdb.org/t/p/w185" + series[i].poster_path;
 
     var context = {
             "title" : series[i].name,
@@ -152,9 +155,10 @@ function renderSeries(series) {
             "vote" : series[i].vote_average,//NUMERO
             "voto" : star, //STELLA
             "release_date" : series[i].release_date,
+            "path" : poster ,
           };
           var html = template(context);
-          $("#movie-list").append(html);
+          $("#series-list").append(html);
     }
 }
 

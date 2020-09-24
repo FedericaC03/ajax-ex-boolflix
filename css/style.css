@@ -6,7 +6,17 @@
   color: yellow;
 }
 
-img {
+.flag {
   width: 20px;
   height: 20px;
 }
+
+img {
+float:left;
+margin: 0 20px;
+}
+
+.date {
+  margin-bottom: 100px;
+}
+/* https://image.tmdb.org/t/p/w185 */
