@@ -1,7 +1,12 @@
 * {
   list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
+body {
+  background-color: grey;
+}
 .yellow {
   color: yellow;
 }
@@ -19,4 +24,20 @@ margin: 0 20px;
 .date {
   margin-bottom: 100px;
 }
+
+.img-logo {
+  width: 150px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: black;
+  height: 70px;
+  align-items: center;
+}
+.search {
++}
+
 /* https://image.tmdb.org/t/p/w185 */

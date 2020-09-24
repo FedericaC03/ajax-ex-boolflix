@@ -10,20 +10,21 @@
   <link rel="stylesheet" href="css/style.css">  <title>Boolflix</title>
 </head>
 <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <img class="img-logo"src="img/netflix.png" alt="netflix-logo">
+        </div>
+        <div class="search">
+          <input id="search-bar" type="text"  value="" placeholder="Cerca">
+          <button id="search-button" type="button" name="button">Cerca</button>
+        </div>
+      </header>
 
 
-    <input id="search-bar" type="text"  value="" placeholder="Cerca">
-    <button id="search-button" type="button" name="button">Cerca</button>
-
-
-  <ul id="movie-list">
-
-  </ul>
-
-  <ul id="series-list">
-
-  </ul>
-
+  <ul id="movie-list"></ul>
+  <ul id="series-list"></ul>
+ </div>
 <!-- TEMPLATE MOVIES -->
   <script id="template" type="text/x-handlebars-template">
 

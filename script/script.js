@@ -146,7 +146,7 @@ function renderSeries(series) {
   for (var i = 0; i < series.length; i++) {
   var star = getStars(series[i].vote_average);
   var flag = getFlag(series[i].original_language);
-  var poster = "https://image.tmdb.org/t/p/w185" + series[i].poster_path;
+  var poster = "https://image.tmdb.org/t/p/w342" + series[i].poster_path;
 
     var context = {
             "title" : series[i].name,
