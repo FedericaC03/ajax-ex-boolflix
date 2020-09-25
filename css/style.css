@@ -49,7 +49,7 @@ header {
   padding: 20px 10px 5px;
   overflow-y: scroll;
   overflow-y: auto;
-  display: none;
+  opacity: 0;
 }
 
 main {
@@ -66,4 +66,8 @@ main {
 
 .container-template p {
   margin: 5px 0;
+}
+
+.contenitore:hover .container-template {
+  display: block;
 }

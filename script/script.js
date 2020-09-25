@@ -127,13 +127,13 @@ if (movies[i].poster_path == null) {
 }
 
 //FACENDO HOVER SULL'IMMAGINE DI COPERTINA SI POTRANNO VEDERE I DETTAGLI DEL FILM
-$( ".poster" ).mouseover(function() {
-  $(this).siblings(".container-template").show();
-});
-
-$( ".poster" ).mouseout(function() {
- $(this).siblings(".container-template").hide();
-});
+// $( ".poster" ).mouseover(function() {
+//   $(this).siblings(".container-template").show();
+// });
+//
+// $( ".poster" ).mouseout(function() {
+//  $(this).siblings(".container-template").hide();
+// });
 
   var context = {
           "title" : movies[i].title,
@@ -170,13 +170,13 @@ function renderSeries(series) {
   }
 
   //FACENDO HOVER SULL'IMMAGINE DI COPERTINA SI POTRANNO VEDERE I DETTAGLI DEL FILM
-  $( ".poster" ).mouseover(function() {
-    $(this).siblings(".container-template").show();
-});
-
-  $( ".poster" ).mouseout(function() {
-   $(this).siblings(".container-template").hide();
-});
+//   $( ".poster" ).mouseover(function() {
+//     $(this).siblings(".container-template").show();
+// });
+//
+//   $( ".poster" ).mouseout(function() {
+//    $(this).siblings(".container-template").hide();
+// });
 
     var context = {
             "title" : series[i].name,
