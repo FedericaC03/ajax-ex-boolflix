@@ -127,11 +127,13 @@ if (movies[i].poster_path == null) {
 }
 
 //FACENDO HOVER SULL'IMMAGINE DI COPERTINA SI POTRANNO VEDERE I DETTAGLI DEL FILM
-$(".contenitore .poster").hover(
-  function () {
-    $(this).siblings(".container-template").toggle();
-    }
-);
+$( ".poster" ).mouseover(function() {
+  $(this).siblings(".container-template").show();
+});
+
+$( ".poster" ).mouseout(function() {
+ $(this).siblings(".container-template").hide();
+});
 
   var context = {
           "title" : movies[i].title,
@@ -166,14 +168,15 @@ function renderSeries(series) {
   } else {
     var poster = "https://image.tmdb.org/t/p/w342" + series[i].poster_path;
   }
-  
-  //FACENDO HOVER SULL'IMMAGINE DI COPERTINA SI POTRANNO VEDERE I DETTAGLI DEL FILM
-  $(".contenitore .poster").hover(
-    function () {
-      $(this).siblings(".container-template").toggle();
-      }
-  );
 
+  //FACENDO HOVER SULL'IMMAGINE DI COPERTINA SI POTRANNO VEDERE I DETTAGLI DEL FILM
+  $( ".poster" ).mouseover(function() {
+    $(this).siblings(".container-template").show();
+});
+
+  $( ".poster" ).mouseout(function() {
+   $(this).siblings(".container-template").hide();
+});
 
     var context = {
             "title" : series[i].name,
