@@ -119,11 +119,20 @@ for (var i = 0; i < movies.length; i++) {
 var star = getStars(movies[i].vote_average);
 var flag = getFlag(movies[i].original_language);
 
+//SE NON C'E' UN IMMAGINE DI COPERTINA PER IL FILM, VIENE GENERATA UN IMMAGINE VUOTA
 if (movies[i].poster_path == null) {
   var poster = "img/notavailable.jpg";
 } else {
   var poster = "https://image.tmdb.org/t/p/w342" + movies[i].poster_path;
 }
+
+//FACENDO HOVER SULL'IMMAGINE DI COPERTINA SI POTRANNO VEDERE I DETTAGLI DEL FILM
+$(".contenitore .poster").hover(
+  function () {
+    $(this).siblings(".container-template").toggle();
+    }
+);
+
   var context = {
           "title" : movies[i].title,
           "original_title" : movies[i].original_title ,
@@ -151,11 +160,20 @@ function renderSeries(series) {
   var star = getStars(series[i].vote_average);
   var flag = getFlag(series[i].original_language);
 
+  //SE NON C'E' UN IMMAGINE DI COPERTINA PER lA SERIE, VIENE GENERATA UN IMMAGINE VUOTA
   if (series[i].poster_path == null) {
     var poster = "img/notavailable.jpg";
   } else {
     var poster = "https://image.tmdb.org/t/p/w342" + series[i].poster_path;
   }
+  
+  //FACENDO HOVER SULL'IMMAGINE DI COPERTINA SI POTRANNO VEDERE I DETTAGLI DEL FILM
+  $(".contenitore .poster").hover(
+    function () {
+      $(this).siblings(".container-template").toggle();
+      }
+  );
+
 
     var context = {
             "title" : series[i].name,
