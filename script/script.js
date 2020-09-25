@@ -78,7 +78,7 @@ $(document).ready(function(){
     var stars='';
         for(var i = 1; i <= 5; i++){
          if(i <= vote){
-          var star = '<i class="fas fa-star"></i>';
+          var star = '<i class="fas fa-star yellow"></i>';
          }else{
            var star = '<i class="far fa-star"></i>';
          }
@@ -118,16 +118,20 @@ function renderMovie(movies) {
 for (var i = 0; i < movies.length; i++) {
 var star = getStars(movies[i].vote_average);
 var flag = getFlag(movies[i].original_language);
-var poster = "https://image.tmdb.org/t/p/w185" + movies[i].poster_path;
 
+if (movies[i].poster_path == null) {
+  var poster = "img/notavailable.jpg";
+} else {
+  var poster = "https://image.tmdb.org/t/p/w342" + movies[i].poster_path;
+}
   var context = {
           "title" : movies[i].title,
           "original_title" : movies[i].original_title ,
           "language" : flag,
           "vote" : movies[i].vote_average,//NUMERO
           "voto" : star, //STELLA
-          "release_date" : movies[i].release_date,
           "path" : poster ,
+          "overview" : movies[i].overview,
         };
         var html = template(context);
         $("#movie-list").append(html);
@@ -146,7 +150,12 @@ function renderSeries(series) {
   for (var i = 0; i < series.length; i++) {
   var star = getStars(series[i].vote_average);
   var flag = getFlag(series[i].original_language);
-  var poster = "https://image.tmdb.org/t/p/w342" + series[i].poster_path;
+
+  if (series[i].poster_path == null) {
+    var poster = "img/notavailable.jpg";
+  } else {
+    var poster = "https://image.tmdb.org/t/p/w342" + series[i].poster_path;
+  }
 
     var context = {
             "title" : series[i].name,
@@ -154,8 +163,8 @@ function renderSeries(series) {
             "language" : flag,
             "vote" : series[i].vote_average,//NUMERO
             "voto" : star, //STELLA
-            "release_date" : series[i].release_date,
             "path" : poster ,
+            "overview" : series[i].overview,
           };
           var html = template(context);
           $("#series-list").append(html);

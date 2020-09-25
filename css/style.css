@@ -4,21 +4,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  background-color: grey;
-}
+
 .yellow {
   color: yellow;
 }
 
 .flag {
   width: 20px;
-  height: 20px;
-}
-
-img {
-float:left;
-margin: 0 20px;
 }
 
 .date {
@@ -37,7 +29,41 @@ header {
   height: 70px;
   align-items: center;
 }
-.search {
-+}
 
-/* https://image.tmdb.org/t/p/w185 */
+.poster {
+  border: 2px solid white;
+  width: 342px;
+  height: 512px;
+  margin: 20px 20px;
+}
+
+.container-template{
+  position: absolute;
+  background-color: black;
+  bottom: 23px;
+  left: 20px;
+  width: 342px;
+  height: 512px;
+  border: 2px solid white;
+  color:white;
+  padding: 20px 10px 5px;
+  overflow-y: scroll;
+  overflow-y: auto;
+  display: none;
+}
+
+main {
+  background-color: grey;
+  width: 100%;
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+}
+
+.contenitore {
+  position: relative;
+  display: inline;
+}
+
+.container-template p {
+  margin: 5px 0;
+}

@@ -20,23 +20,25 @@
           <button id="search-button" type="button" name="button">Cerca</button>
         </div>
       </header>
-
-
-  <ul id="movie-list"></ul>
-  <ul id="series-list"></ul>
- </div>
+      <main>
+        <div class="container-list">
+          <ul id="movie-list"></ul>
+          <ul id="series-list"></ul>
+        </div>
+      </main>
+   </div>
 <!-- TEMPLATE MOVIES -->
   <script id="template" type="text/x-handlebars-template">
-
-    <img src="{{path}}" alt="">
-    <li class="container">
-      <h1>Titolo: {{title}} {{name}}</h1>
-      <h2>Titolo in lingua originale: {{original_title}} {{original_name}}</h2>
-      <p>Lingua originale: {{{language}}}</p>
-      <h5>Voto:{{{voto}}}</h5>
-      <p class="date">data: {{release_date}}</p>
-      <hr>
-    </li>
+    <div class="contenitore">
+        <img class="poster" src="{{path}}" alt="path">
+        <li class="container-template">
+          <p><strong>Titolo:</strong>{{title}} {{name}}</p>
+          <p> <strong>Titolo originale:</strong> {{original_title}} {{original_name}}</p>
+          <p><strong>Lingua originale:</strong> {{{language}}}</p>
+          <p><strong>Voto:</strong>{{{voto}}}</p>
+          <p><strong>Overview:</strong> {{overview}}</p>
+        </li>
+    </div>
   </script>
 
   <script src="script/script.js" charset="utf-8"></script>
