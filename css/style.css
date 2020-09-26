@@ -41,7 +41,7 @@ header {
   position: absolute;
   background-color: black;
   bottom: 23px;
-  left: 20px;
+  right: 20px;
   width: 342px;
   height: 512px;
   border: 2px solid white;
@@ -49,7 +49,7 @@ header {
   padding: 20px 10px 5px;
   overflow-y: scroll;
   overflow-y: auto;
-  opacity: 0;
+  display: none;
 }
 
 main {
@@ -57,6 +57,7 @@ main {
   width: 100%;
   height: calc(100vh - 70px);
   overflow-y: scroll;
+  overflow-y:auto;
 }
 
 .contenitore {
@@ -68,6 +69,14 @@ main {
   margin: 5px 0;
 }
 
-.contenitore:hover .container-template {
-  display: block;
+#movie-list, #series-list {
+display: flex;
+}
+
+h2 {
+  font-size: 30px;
+  padding: 5px;
+}
+.box:hover .container-template {
+  display: block !important;
 }
