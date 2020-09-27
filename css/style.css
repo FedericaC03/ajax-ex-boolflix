@@ -40,7 +40,7 @@ header {
 .container-template{
   position: absolute;
   background-color: black;
-  bottom: 23px;
+  top: -260px;
   right: 20px;
   width: 342px;
   height: 512px;
@@ -71,6 +71,8 @@ main {
 
 #movie-list, #series-list {
 display: flex;
+flex-wrap: wrap;
+justify-content:space-between;
 }
 
 h2 {
@@ -79,4 +81,13 @@ h2 {
 }
 .box:hover .container-template {
   display: block !important;
+}
+
+.box-films {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa-angle-left{
+  line-height: 556px;
 }
