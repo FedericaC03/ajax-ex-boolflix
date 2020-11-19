@@ -4,22 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="css/style.css">  <title>Boolflix</title>
+  <link rel="stylesheet" href="css/style.css">
+  <title>Boolflix</title>
 </head>
 <body>
-    <div class="container">
+    <div>
       <!-- HEADER -->
       <header>
         <div class="logo">
           <img class="img-logo"src="img/netflix.png" alt="netflix-logo">
         </div>
         <div class="search">
-          <input id="search-bar" type="text"  value="" placeholder="Cerca">
-          <button id="search-button" type="button" name="button">Cerca</button>
+          <div class="input-group md-form form-sm form-1 pl-0">
+            <div class="input-group-prepend">
+           
+            </div>
+            <input id="search-bar" class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search">
+          </div>
+          <button  id="search-button" type="button" class="btn btn-danger">Cerca</button>
+
         </div>
       </header>
       <!--/ HEADER -->
@@ -27,11 +35,11 @@
       <main>
         <div class="container-list">
           <!-- MOVIE LIST -->
-          <h2>Films</h2>
+          <h2>I miei film</h2>
           <ul id="movie-list"></ul>
           <!--/ MOVIE LIST -->
           <!-- SERIES LIST -->
-          <h2>Serie tv</h2>
+          <h2>Le mie Serie tv</h2>
           <ul id="series-list"></ul>
           <!-- / SERIES LIST -->
         </div>
@@ -48,7 +56,7 @@
             <p> <strong>Titolo originale:</strong> {{original_title}} {{original_name}}</p>
             <p><strong>Lingua originale:</strong> {{{language}}}</p>
             <p><strong>Voto:</strong>{{{voto}}}</p>
-            <p><strong>Overview:</strong> {{overview}}</p>
+            <p><strong>Trama:</strong> {{overview}}</p>
           </li>
       </div>
   </div>

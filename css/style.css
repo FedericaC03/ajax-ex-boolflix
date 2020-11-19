@@ -32,18 +32,18 @@ header {
 
 .poster {
   border: 2px solid white;
-  width: 342px;
-  height: 512px;
+  width: 250px;
+  height: 330px;
   margin: 20px 20px;
 }
 
 .container-template{
   position: absolute;
-  background-color: black;
-  top: -260px;
+  background-color:rgba(0, 0, 0, 0.9);
+  top: -170px;
   right: 20px;
-  width: 342px;
-  height: 512px;
+  width: 250px;
+  height: 330px;
   border: 2px solid white;
   color:white;
   padding: 20px 10px 5px;
@@ -53,7 +53,7 @@ header {
 }
 
 main {
-  background-color: grey;
+  background-color:#1D1D1D;
   width: 100%;
   height: calc(100vh - 70px);
   overflow-y: scroll;
@@ -72,12 +72,15 @@ main {
 #movie-list, #series-list {
 display: flex;
 flex-wrap: wrap;
-justify-content:space-between;
+justify-content:flex-start;
 }
 
 h2 {
   font-size: 30px;
   padding: 5px;
+  margin-left: 10px;
+  font-weight: bold;
+  color:white;
 }
 .box:hover .container-template {
   display: block !important;
@@ -90,4 +93,18 @@ h2 {
 
 .fa-angle-left{
   line-height: 556px;
+}
+.container-list {
+  width: 99% ;
+  margin:auto;
+}
+
+.search {
+  display: flex;
+}
+
+#search-bar {
+  border-radius: 5px;
+  margin-right: 10px;
+
 }
